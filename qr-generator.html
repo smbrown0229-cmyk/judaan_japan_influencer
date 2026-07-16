@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>QR 코드 생성기 | IAN GLOBAL</title>
+<style>
+  *{box-sizing:border-box;}
+  body{font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
+    background:#f4f6f9;color:#1a2431;margin:0;padding:40px 16px;}
+  .card{max-width:460px;margin:0 auto;background:#fff;border:1px solid #e3e8ef;border-radius:16px;
+    padding:28px;box-shadow:0 6px 24px rgba(14,42,71,.08);}
+  h1{font-size:18px;color:#0e2a47;margin:0 0 6px;}
+  p.sub{font-size:13px;color:#5b6774;margin:0 0 20px;line-height:1.6;}
+  label{font-size:13px;font-weight:600;display:block;margin-bottom:6px;}
+  input{width:100%;padding:12px 14px;border:1px solid #e3e8ef;border-radius:10px;font-size:14px;}
+  input:focus{outline:none;border-color:#1f6feb;box-shadow:0 0 0 3px rgba(31,111,235,.12);}
+  button{width:100%;padding:14px;border:none;border-radius:10px;background:#0e2a47;color:#fff;
+    font-size:15px;font-weight:700;cursor:pointer;margin-top:14px;}
+  button:active{opacity:.85;}
+  #qrBox{text-align:center;margin-top:24px;display:none;}
+  #qrBox img{width:260px;height:260px;border:1px solid #eee;border-radius:12px;padding:10px;background:#fff;}
+  .dl{display:inline-block;margin-top:14px;font-size:14px;color:#1f6feb;text-decoration:none;font-weight:600;}
+  .hint{font-size:12px;color:#8a95a1;margin-top:8px;}
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>서명 페이지 QR 코드 생성</h1>
+    <p class="sub">배포한 서명 페이지 주소(sign.html의 URL)를 붙여넣고 버튼을 누르면 QR이 만들어집니다. 이미지를 저장해 인쇄물·DM에 사용하세요.</p>
+    <label>서명 페이지 URL</label>
+    <input type="text" id="url" placeholder="https://your-site.com/sign.html" />
+    <button id="gen">QR 코드 만들기</button>
+    <div id="qrBox">
+      <img id="qrImg" alt="QR code" />
+      <br/>
+      <a class="dl" id="dl" download="ian-contract-qr.png">⬇ PNG로 저장</a>
+      <div class="hint" id="urlEcho"></div>
+    </div>
+  </div>
+<script src="vendor/qrcode.js"></script>
+<script>
+  const gen=document.getElementById('gen');
+  gen.addEventListener('click',function(){
+    const url=document.getElementById('url').value.trim();
+    if(!url){alert('URL을 입력하세요.');return;}
+    const qr=qrcode(0,'M');
+    qr.addData(url);
+    qr.make();
+    // 고해상도 PNG 생성
+    const cellSize=10, margin=4*cellSize;
+    const count=qr.getModuleCount();
+    const size=count*cellSize+margin*2;
+    const cv=document.createElement('canvas');
+    cv.width=size;cv.height=size;
+    const ctx=cv.getContext('2d');
+    ctx.fillStyle='#fff';ctx.fillRect(0,0,size,size);
+    ctx.fillStyle='#0e2a47';
+    for(let r=0;r<count;r++)for(let c=0;c<count;c++){
+      if(qr.isDark(r,c))ctx.fillRect(margin+c*cellSize,margin+r*cellSize,cellSize,cellSize);
+    }
+    const data=cv.toDataURL('image/png');
+    document.getElementById('qrImg').src=data;
+    document.getElementById('dl').href=data;
+    document.getElementById('urlEcho').textContent=url;
+    document.getElementById('qrBox').style.display='block';
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>商品企画書ダウンロード | IAN GLOBAL</title>
+<style>
+  :root{
+    --brand:#0e2a47;--brand-2:#1f6feb;--bg:#0e2a47;--text:#1a2431;--muted:#5b6774;--line:#e3e8ef;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP","Meiryo",system-ui,-apple-system,sans-serif;
+    color:var(--text);-webkit-font-smoothing:antialiased;background:#f4f6f9;
+  }
+  .hero{
+    background:linear-gradient(160deg,#0e2a47 0%,#123a63 60%,#1f6feb 130%);
+    color:#fff;padding:64px 20px 72px;text-align:center;position:relative;overflow:hidden;
+  }
+  .hero::after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;
+    background:radial-gradient(circle,rgba(255,255,255,.10),transparent 70%);}
+  .hero .logo{font-weight:800;letter-spacing:.16em;font-size:14px;opacity:.85;margin-bottom:20px;}
+  .hero h1{font-size:30px;font-weight:800;margin:0 0 14px;line-height:1.35;letter-spacing:.01em;}
+  .hero p{font-size:15px;opacity:.85;max-width:520px;margin:0 auto;line-height:1.8;}
+  .wrap{max-width:640px;margin:-40px auto 0;padding:0 20px 60px;position:relative;z-index:2;}
+  .card{
+    background:#fff;border-radius:18px;box-shadow:0 12px 40px rgba(14,42,71,.14);
+    padding:32px 28px;text-align:center;
+  }
+  .doc-ico{width:72px;height:72px;border-radius:16px;background:#eef4ff;display:flex;align-items:center;
+    justify-content:center;margin:0 auto 18px;}
+  .doc-ico svg{width:36px;height:36px;stroke:var(--brand-2);fill:none;stroke-width:1.6;}
+  .card h2{font-size:20px;margin:0 0 8px;color:var(--brand);}
+  .card .desc{font-size:14px;color:var(--muted);line-height:1.8;margin:0 0 8px;}
+  .meta{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:18px 0 24px;
+    font-size:12.5px;color:var(--muted);}
+  .meta span{display:inline-flex;align-items:center;gap:5px;}
+  .dl-btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;
+    padding:17px;border-radius:12px;background:var(--brand);color:#fff;font-size:16px;font-weight:700;
+    text-decoration:none;transition:transform .12s,box-shadow .12s;
+  }
+  .dl-btn:active{transform:translateY(1px);}
+  .dl-btn svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;}
+  .sub{font-size:12px;color:var(--muted);margin-top:14px;}
+  .points{max-width:640px;margin:26px auto 0;padding:0 20px;display:grid;gap:12px;}
+  .point{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+    display:flex;gap:12px;align-items:flex-start;}
+  .point .n{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:#eef4ff;color:var(--brand-2);
+    font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .point p{margin:0;font-size:13.5px;line-height:1.7;color:#2a3644;}
+  .foot{text-align:center;font-size:11.5px;color:var(--muted);padding:30px 20px 40px;line-height:1.7;}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <div class="logo">IAN GLOBAL</div>
+    <h1>商品企画書のご案内</h1>
+    <p>ご興味をお持ちいただきありがとうございます。<br/>下記より最新の商品企画書（PDF）をダウンロードいただけます。</p>
+  </div>
+
+  <div class="wrap">
+    <div class="card">
+      <div class="doc-ico">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
+      </div>
+      <h2>商品企画書 2026</h2>
+      <p class="desc">商品コンセプト・ブランドストーリー・コラボレーション内容をまとめた資料です。</p>
+      <div class="meta">
+        <span>📄 PDF形式</span>
+        <span>🌐 日本語</span>
+        <span>🔒 安全なダウンロード</span>
+      </div>
+      <!-- ▼ 実際の企画書ファイル名に合わせて href を変更（同じフォルダに置く） -->
+      <a class="dl-btn" href="product-plan.pdf" download>
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        企画書をダウンロード
+      </a>
+      <div class="sub">ダウンロードが始まらない場合は、ボタンを長押しして「リンク先を保存」を選択してください。</div>
+    </div>
+
+    <div class="points">
+      <div class="point"><div class="n">1</div><p>ご不明な点は事務局（hjhan@ianglobal.im）までお気軽にお問い合わせください。</p></div>
+      <div class="point"><div class="n">2</div><p>ご協業にご興味をお持ちの方は、担当よりお送りした署名ページよりお手続きください。</p></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    © 2026 株式会社IAN GLOBAL. All rights reserved.
+  </div>
+</body>
+</html>
