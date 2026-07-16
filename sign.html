@@ -1,42 +1,29 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ja">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-<title>Judaan Japan Ambassador Challenge — 참가 신청 및 동의</title>
+<title>Judaan Japan Ambassador Challenge — 参加申込および同意</title>
 <style>
   :root{
-    /* Judaan core green (필요시 hex만 교체) */
-    --brand:#0E7A4B;
-    --brand-2:#16A163;
-    --brand-3:#0A5D39;
-    --ink:#122019;
-    --en:#9aa6a0;          /* 영문 회색 */
-    --line:#e4ece7;
-    --wash:#EAF7F0;
-    --wash-2:#F4FBF7;
-    --bg:#eef3f0;
-    --card:#ffffff;
-    --danger:#d64545;
-    --radius:16px;
+    /* softer, lighter green (채도↓ 명도↑) */
+    --brand:#4AA985; --brand-2:#7CC7A8; --brand-3:#3C8A6B;
+    --ink:#233b31; --en:#9fb0a8; --line:#e5efea;
+    --wash:#EFF7F3; --wash-2:#F6FBF8; --bg:#eef3f1; --card:#ffffff;
+    --danger:#d97070; --radius:16px;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
   html,body{margin:0;padding:0;}
   body{
-    font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR","Hiragino Kaku Gothic ProN",system-ui,-apple-system,sans-serif;
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Noto Sans JP","Meiryo","Noto Sans KR",system-ui,-apple-system,sans-serif;
     background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;
   }
   .app{max-width:480px;margin:0 auto;min-height:100vh;background:var(--bg);display:flex;flex-direction:column;}
-
-  /* ===== 상단 헤더 + 진행바 ===== */
-  .top{
-    background:linear-gradient(155deg,#0E7A4B 0%,#0A5D39 62%,#16A163 130%);
-    color:#fff;padding:22px 20px 18px;position:sticky;top:0;z-index:20;
-    box-shadow:0 2px 14px rgba(10,93,57,.18);
-  }
-  .top .brand{font-weight:800;letter-spacing:.14em;font-size:12px;opacity:.9;}
-  .top h1{margin:6px 0 2px;font-size:17px;font-weight:800;line-height:1.35;}
-  .top .h-en{font-size:11.5px;opacity:.72;font-weight:500;}
+  .top{background:linear-gradient(155deg,#54B190 0%,#3C8A6B 62%,#7CC7A8 130%);
+    color:#fff;padding:22px 20px 18px;position:sticky;top:0;z-index:20;box-shadow:0 2px 14px rgba(60,138,107,.18);}
+  .top .brand{font-weight:800;letter-spacing:.14em;font-size:13.5px;opacity:.9;}
+  .top h1{margin:6px 0 2px;font-size:18.5px;font-weight:800;line-height:1.35;}
+  .top .h-en{font-size:13px;opacity:.72;font-weight:500;}
   .steps{display:flex;gap:8px;margin-top:16px;}
   .steps .st{flex:1;text-align:center;}
   .steps .bar{height:5px;border-radius:99px;background:rgba(255,255,255,.28);overflow:hidden;}
@@ -44,302 +31,276 @@
   .steps.s1 .st:nth-child(1) .bar i{width:100%;}
   .steps.s2 .st:nth-child(1) .bar i,.steps.s2 .st:nth-child(2) .bar i{width:100%;}
   .steps.s3 .st .bar i{width:100%;}
-  .steps .lb{font-size:10px;margin-top:5px;opacity:.85;font-weight:600;letter-spacing:.02em;}
-
+  .steps .lb{font-size:11.5px;margin-top:5px;opacity:.85;font-weight:600;letter-spacing:.02em;}
   .scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:16px 14px 120px;}
   .step{display:none;}
   .step.active{display:block;animation:fade .25s ease;}
   @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
-
-  .intro{background:var(--wash);border:1px solid var(--line);border-radius:var(--radius);padding:16px 16px;margin-bottom:14px;}
-  .intro .ko{font-size:13.5px;font-weight:600;color:var(--brand-3);}
-  .intro .en{font-size:11.5px;color:var(--en);margin-top:3px;line-height:1.5;}
-
-  /* ===== 동의 섹션 카드 ===== */
+  .intro{background:var(--wash);border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin-bottom:14px;}
+  .intro .ko{font-size:15px;font-weight:600;color:var(--brand-3);}
+  .intro .en{font-size:13px;color:var(--en);margin-top:3px;line-height:1.5;}
   .sec{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
     padding:16px 16px 12px;margin-bottom:12px;box-shadow:0 1px 2px rgba(10,60,40,.04);}
   .sec .head{display:flex;align-items:flex-start;gap:9px;margin-bottom:10px;}
   .sec .no{flex:0 0 auto;width:24px;height:24px;border-radius:8px;background:var(--wash);
-    color:var(--brand);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
-  .sec .ttl .ko{font-size:14.5px;font-weight:800;color:var(--ink);}
-  .sec .ttl .en{font-size:11px;color:var(--en);font-weight:600;margin-top:1px;}
+    color:var(--brand);font-weight:800;font-size:14.5px;display:flex;align-items:center;justify-content:center;}
+  .sec .ttl .ko{font-size:18px;font-weight:800;color:var(--ink);}
+  .sec .ttl .en{font-size:13.5px;color:var(--en);font-weight:600;margin-top:2px;}
   .sec .body{padding-left:2px;}
-  .blk{margin-bottom:9px;}
-  .blk .ko{font-size:13px;font-weight:600;color:#26332c;}
-  .blk .en{font-size:11px;color:var(--en);line-height:1.5;margin-top:2px;}
-  .ul{margin:4px 0 9px;padding-left:0;list-style:none;}
-  .ul li{position:relative;padding-left:16px;margin-bottom:6px;}
-  .ul li::before{content:"";position:absolute;left:3px;top:8px;width:5px;height:5px;border-radius:50%;background:var(--brand-2);}
-  .ul li .ko{font-size:12.5px;font-weight:600;color:#26332c;}
-  .ul li .en{font-size:10.5px;color:var(--en);margin-top:1px;}
-
-  /* 체크박스 */
-  .chk{display:flex;align-items:flex-start;gap:11px;margin-top:10px;padding:12px;border-radius:12px;
-    background:var(--wash-2);border:1.5px solid var(--line);cursor:pointer;transition:.15s;}
+  .blk{margin-bottom:11px;}
+  .blk .ko{font-size:16.5px;font-weight:600;color:#26332c;line-height:1.7;}
+  .blk .en{font-size:14px;color:var(--en);line-height:1.55;margin-top:3px;}
+  .ul{margin:5px 0 11px;padding-left:0;list-style:none;}
+  .ul li{position:relative;padding-left:18px;margin-bottom:8px;}
+  .ul li::before{content:"";position:absolute;left:3px;top:9px;width:6px;height:6px;border-radius:50%;background:var(--brand-2);}
+  .ul li .ko{font-size:15.5px;font-weight:600;color:#26332c;}
+  .ul li .en{font-size:13px;color:var(--en);margin-top:1px;}
+  .chk{display:flex;align-items:center;gap:14px;margin-top:14px;padding:18px 16px;border-radius:14px;
+    background:var(--wash-2);border:2px solid var(--line);cursor:pointer;transition:.15s;}
   .chk.on{background:var(--wash);border-color:var(--brand-2);}
   .chk input{position:absolute;opacity:0;width:0;height:0;}
-  .chk .box{flex:0 0 auto;width:24px;height:24px;border-radius:7px;border:2px solid #c3d3ca;background:#fff;
-    display:flex;align-items:center;justify-content:center;transition:.15s;margin-top:1px;}
+  .chk .box{flex:0 0 auto;width:34px;height:34px;border-radius:10px;border:2.5px solid #bcd0c6;background:#fff;
+    display:flex;align-items:center;justify-content:center;transition:.15s;}
   .chk.on .box{background:var(--brand);border-color:var(--brand);}
-  .chk .box svg{width:14px;height:14px;stroke:#fff;stroke-width:3.4;fill:none;opacity:0;transition:.15s;}
+  .chk .box svg{width:20px;height:20px;stroke:#fff;stroke-width:3.4;fill:none;opacity:0;transition:.15s;}
   .chk.on .box svg{opacity:1;}
-  .chk .lab .ko{font-size:13px;font-weight:700;color:var(--ink);}
-  .chk .lab .en{font-size:11px;color:var(--en);margin-top:1px;}
-
-  /* 입력 */
+  .chk .lab .ko{font-size:18px;font-weight:700;color:var(--ink);}
+  .chk .lab .en{font-size:14.5px;color:var(--en);margin-top:2px;}
   .field{margin-bottom:13px;}
-  .field label .ko{font-size:13px;font-weight:700;color:var(--ink);}
-  .field label .en{font-size:10.5px;color:var(--en);margin-left:6px;font-weight:500;}
+  .field label .ko{font-size:14.5px;font-weight:700;color:var(--ink);}
+  .field label .en{font-size:12px;color:var(--en);margin-left:6px;font-weight:500;}
   .field .req{color:var(--danger);margin-left:3px;}
   .field input{width:100%;margin-top:6px;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;
-    font-size:16px;background:#fff;color:var(--ink);}
+    font-size:17.5px;background:#fff;color:var(--ink);}
   .field input:focus{outline:none;border-color:var(--brand-2);box-shadow:0 0 0 3px rgba(22,161,99,.14);}
   .field input[readonly]{background:var(--wash-2);color:#5f6f68;}
-
-  /* 서명 */
-  .sig-title .ko{font-size:14px;font-weight:800;}
-  .sig-title .en{font-size:11px;color:var(--en);margin-bottom:8px;}
+  .sig-title .ko{font-size:15.5px;font-weight:800;}
+  .sig-title .en{font-size:12.5px;color:var(--en);margin-bottom:8px;}
   .sig-wrap{position:relative;border:2px dashed #b6ccc0;border-radius:14px;background:#fff;touch-action:none;margin-top:6px;}
   .sig-wrap canvas{display:block;width:100%;height:210px;border-radius:14px;}
   .sig-ph{position:absolute;inset:0;display:flex;flex-direction:column;gap:2px;align-items:center;justify-content:center;
-    color:#b3c1ba;font-size:13px;pointer-events:none;text-align:center;}
-  .sig-ph .en{font-size:11px;opacity:.85;}
+    color:#b3c1ba;font-size:14.5px;pointer-events:none;text-align:center;}
+  .sig-ph .en{font-size:12.5px;opacity:.85;}
   .sig-actions{display:flex;justify-content:flex-end;margin-top:6px;}
-  .btn-clear{background:none;border:none;color:var(--brand);font-size:12.5px;font-weight:700;cursor:pointer;padding:6px 2px;}
-
-  /* ===== 하단 고정 내비 ===== */
+  .btn-clear{background:none;border:none;color:var(--brand);font-size:14px;font-weight:700;cursor:pointer;padding:6px 2px;}
   .nav{position:fixed;left:0;right:0;bottom:0;z-index:25;background:rgba(255,255,255,.96);
     backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:12px 14px calc(12px + env(safe-area-inset-bottom));
     display:flex;gap:10px;max-width:480px;margin:0 auto;}
-  .btn{flex:1;padding:15px;border:none;border-radius:13px;font-size:15px;font-weight:800;cursor:pointer;transition:.15s;}
+  .btn{flex:1;padding:15px;border:none;border-radius:13px;font-size:16.5px;font-weight:800;cursor:pointer;transition:.15s;}
   .btn-ghost{flex:0 0 34%;background:var(--wash);color:var(--brand-3);}
   .btn-main{background:var(--brand);color:#fff;box-shadow:0 4px 12px rgba(14,122,75,.28);}
   .btn-main:disabled{background:#c4d4cc;box-shadow:none;cursor:not-allowed;}
   .btn-main:not(:disabled):active{background:var(--brand-3);}
-  .hint{font-size:11px;color:var(--danger);text-align:center;margin-top:8px;display:none;}
-  .cnt{font-size:11px;color:var(--en);text-align:center;padding:2px 0 8px;font-weight:600;}
-
-  .foot{text-align:center;font-size:10.5px;color:#93a39b;padding:8px 20px 0;line-height:1.6;}
-
-  /* 오버레이 */
+  .hint{font-size:12.5px;color:var(--danger);text-align:center;margin-top:8px;display:none;}
+  .cnt{font-size:12.5px;color:var(--en);text-align:center;padding:2px 0 8px;font-weight:600;}
+  .foot{text-align:center;font-size:12px;color:#93a39b;padding:8px 20px 0;line-height:1.6;}
   .overlay{position:fixed;inset:0;background:rgba(244,251,247,.96);display:none;flex-direction:column;
     align-items:center;justify-content:center;z-index:60;padding:28px;text-align:center;}
   .spinner{width:46px;height:46px;border:4px solid #d3e7dc;border-top-color:var(--brand);border-radius:50%;
     animation:spin 1s linear infinite;margin-bottom:16px;}
   @keyframes spin{to{transform:rotate(360deg);}}
-  .overlay h2{color:var(--brand-3);margin:0 0 6px;font-size:19px;}
-  .overlay p{color:#5f6f68;margin:0;font-size:13.5px;line-height:1.6;}
-  .overlay .en{color:#9aa6a0;font-size:11.5px;}
+  .overlay h2{color:var(--brand-3);margin:0 0 6px;font-size:20.5px;}
+  .overlay p{color:#5f6f68;margin:0;font-size:15px;line-height:1.6;}
+  .overlay .en{color:#9aa6a0;font-size:13px;}
   .check{width:66px;height:66px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;margin-bottom:18px;box-shadow:0 6px 18px rgba(14,122,75,.3);}
   .check svg{width:34px;height:34px;stroke:#fff;stroke-width:3;fill:none;}
-
-  /* PDF 렌더용 (화면 밖) — 예쁘지 않아도 되는 증빙용 */
   #pdf-render{position:fixed;left:-99999px;top:0;width:760px;background:#fff;padding:44px;color:#111;
-    font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR",sans-serif;}
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP","Meiryo","Noto Sans KR",sans-serif;}
 </style>
 </head>
 <body>
 <div class="app">
   <div class="top">
     <div class="brand">JUDAAN</div>
-    <h1>Japan Ambassador Challenge · 참가 신청 및 동의</h1>
+    <h1>Japan Ambassador Challenge · 参加申込および同意</h1>
     <div class="h-en">Application &amp; Consent Form</div>
     <div class="steps s1" id="steps">
-      <div class="st"><div class="bar"><i></i></div><div class="lb">동의 1</div></div>
-      <div class="st"><div class="bar"><i></i></div><div class="lb">동의 2</div></div>
-      <div class="st"><div class="bar"><i></i></div><div class="lb">서명</div></div>
+      <div class="st"><div class="bar"><i></i></div><div class="lb">同意 1</div></div>
+      <div class="st"><div class="bar"><i></i></div><div class="lb">同意 2</div></div>
+      <div class="st"><div class="bar"><i></i></div><div class="lb">署名</div></div>
     </div>
   </div>
 
   <div class="scroll" id="scroll">
-    <!-- STEP 1 -->
     <div class="step active" id="step1">
       <div class="intro">
-        <div class="ko">Judaan Japan Ambassador Challenge에 관심을 가져주셔서 감사합니다. 본 프로그램은 창의적인 콘텐츠를 통해 Judaan과 함께 성장할 일본 공식 Ambassador를 선발하는 프로젝트입니다. 참가 신청 전 아래 내용을 확인하시고 동의해 주세요.</div>
-        <div class="en">Thank you for your interest in the Judaan Japan Ambassador Challenge. This program selects Japan's official Judaan Ambassadors who will grow together with Judaan through creative content. Please review and agree to the following before applying.</div>
+        <div class="ko">Judaan Japan Ambassador Challengeにご関心をお寄せいただき、誠にありがとうございます。本プログラムは、創造的なコンテンツを通じてJudaanとともに成長していただける日本公式アンバサダーを選出するプロジェクトです。ご参加にあたり、以下の内容をご確認のうえ、ご同意くださいますようお願いいたします。</div>
+        <div class="en">Thank you for your interest in the Judaan Japan Ambassador Challenge. This program is designed to select the official Judaan Japan Ambassador who will grow together with Judaan by creating creative and engaging content. Please read the following information carefully and provide your consent before submitting your application.</div>
       </div>
       <div id="secWrap1"></div>
     </div>
 
-    <!-- STEP 2 -->
     <div class="step" id="step2">
       <div id="secWrap2"></div>
     </div>
 
-    <!-- STEP 3 -->
     <div class="step" id="step3">
       <div class="sec">
-        <div class="head"><div class="no">👤</div><div class="ttl"><div class="ko">참가자 정보</div><div class="en">Participant Information</div></div></div>
+        <div class="head"><div class="no">👤</div><div class="ttl"><div class="ko">参加者情報</div><div class="en">Participant Information</div></div></div>
         <div class="field">
-          <label><span class="ko">이름 (또는 활동명)</span><span class="en">Name / Handle</span><span class="req">*</span></label>
-          <input type="text" id="fName" placeholder="예: 田中 花子 / hanako" />
+          <label><span class="ko">氏名（または活動名）</span><span class="en">Name / Creator Name</span><span class="req">*</span></label>
+          <input type="text" id="fName" placeholder="例）田中 花子 / hanako" />
         </div>
         <div class="field">
-          <label><span class="ko">Instagram 계정</span><span class="en">Instagram</span><span class="req">*</span></label>
+          <label><span class="ko">Instagramアカウント</span><span class="en">Instagram</span><span class="req">*</span></label>
           <input type="text" id="fIg" placeholder="@your_account" />
         </div>
         <div class="field">
-          <label><span class="ko">이메일</span><span class="en">Email</span><span class="req">*</span></label>
+          <label><span class="ko">メールアドレス</span><span class="en">Email</span><span class="req">*</span></label>
           <input type="text" id="fEmail" inputmode="email" placeholder="you@example.com" />
         </div>
         <div class="field">
-          <label><span class="ko">연락처</span><span class="en">Contact</span></label>
+          <label><span class="ko">電話番号</span><span class="en">Phone Number</span></label>
           <input type="text" id="fPhone" inputmode="tel" placeholder="+81 90-0000-0000" />
         </div>
         <div class="field">
-          <label><span class="ko">신청일</span><span class="en">Date</span></label>
+          <label><span class="ko">申請日</span><span class="en">Date</span></label>
           <input type="text" id="fDate" readonly />
         </div>
       </div>
 
       <div class="sec">
-        <div class="sig-title"><div class="ko">전자서명 <span class="req" style="color:var(--danger)">*</span></div><div class="en">Electronic Signature — 화면에 직접 서명해 주세요 / Please sign directly on the screen</div></div>
+        <div class="sig-title"><div class="ko">電子署名 <span class="req" style="color:var(--danger)">*</span></div><div class="en">Electronic Signature — 画面に直接ご署名ください / Please sign directly on the screen</div></div>
         <div class="sig-wrap" id="sigWrap">
           <canvas id="sigCanvas"></canvas>
-          <div class="sig-ph" id="sigPh"><div>여기에 손으로 서명해 주세요</div><div class="en">Sign here with your finger</div></div>
+          <div class="sig-ph" id="sigPh"><div>ここに指でご署名ください</div><div class="en">Please sign here with your finger</div></div>
         </div>
-        <div class="sig-actions"><button type="button" class="btn-clear" id="btnClear">✕ 다시 서명 / Clear</button></div>
+        <div class="sig-actions"><button type="button" class="btn-clear" id="btnClear">✕ やり直す / Clear</button></div>
       </div>
-      <div class="foot">본 동의서는 서명 즉시 PDF로 사무국(hjhan@ianglobal.im)에 전송됩니다.<br/>Upon signing, this form is sent as a PDF to the secretariat.</div>
+      <div class="foot">本同意書は、署名後ただちにPDFとして事務局（hjhan@ianglobal.im）へ送信されます。<br/>Upon signing, this form is sent as a PDF to the secretariat.</div>
     </div>
   </div>
 
   <div class="cnt" id="cnt"></div>
   <div class="nav" id="nav">
-    <button class="btn btn-ghost" id="btnBack" style="display:none;">이전<br style="line-height:0"><span style="font-size:9px;opacity:.7">Back</span></button>
-    <button class="btn btn-main" id="btnNext" disabled>다음 <span style="font-size:10px;opacity:.85">Next</span></button>
-    <button class="btn btn-main" id="btnSubmit" disabled style="display:none;">서명하고 제출 <span style="font-size:10px;opacity:.85">Submit</span></button>
+    <button class="btn btn-ghost" id="btnBack" style="display:none;">戻る<br style="line-height:0"><span style="font-size:10.5px;opacity:.7">Back</span></button>
+    <button class="btn btn-main" id="btnNext" disabled>次へ <span style="font-size:11.5px;opacity:.85">Next</span></button>
+    <button class="btn btn-main" id="btnSubmit" disabled style="display:none;">署名して送信 <span style="font-size:11.5px;opacity:.85">Submit</span></button>
   </div>
   <div class="hint" id="hint"></div>
 </div>
 
-<!-- 오버레이 -->
 <div class="overlay" id="overlay">
   <div id="ovLoading">
     <div class="spinner"></div>
-    <h2>전송 중입니다…</h2>
+    <h2>送信しています…</h2>
     <p class="en">Sending… please keep this page open.</p>
   </div>
   <div id="ovDone" style="display:none;">
     <div class="check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></div>
-    <h2>제출이 완료되었습니다</h2>
-    <p>참가 신청과 동의가 정상적으로 접수되었습니다.<br/><span class="en">Your application has been submitted successfully.</span></p>
+    <h2>送信が完了しました</h2>
+    <p>ご参加のお申込みと同意が正常に受け付けられました。<br/><span class="en">Your application has been submitted successfully.</span></p>
   </div>
 </div>
 
-<!-- PDF 렌더용 -->
 <div id="pdf-render" aria-hidden="true"></div>
 
 <script src="vendor/signature_pad.umd.min.js"></script>
 <script src="vendor/html2canvas.min.js"></script>
 <script src="vendor/jspdf.umd.min.js"></script>
 <script>
-/* =========================================================
-   설정: Google Apps Script 웹앱 URL 을 붙여넣으세요
-   ========================================================= */
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz83QUge5tPmocWDWeQPjS6jd_IkYo5axAKksUFBSee-xqk0e9_fvXFQKUy_nZ_p5PYbw/exec";
 
-/* ---------- 동의 내용 데이터 (한/영) ---------- */
+/* 同意内容（日本語=メイン / 英語=サブ） */
 const SECTIONS = [
-  {no:"①", ko:"참가 동의", en:"Participation Consent",
+  {no:"①", ko:"参加同意", en:"Participation Agreement",
    body:[
-     {p:{ko:"본인은 Judaan Japan Ambassador Challenge의 취지와 운영 방식을 충분히 이해하였으며, 자발적인 의사로 본 프로그램에 참여합니다.",
-         en:"I fully understand the purpose and operation of the Judaan Japan Ambassador Challenge and participate voluntarily."}},
-     {p:{ko:"또한 프로그램 운영 규정 및 심사 절차를 준수하는 것에 동의합니다.",
-         en:"I also agree to comply with the program's operating rules and evaluation procedures."}}
+     {p:{ko:"私は、Judaan Japan Ambassador Challengeの趣旨および運営方法を十分に理解し、自らの意思で本プログラムに参加することに同意します。",
+         en:"I fully understand the purpose and operation of the Judaan Japan Ambassador Challenge and voluntarily agree to participate in this program."}},
+     {p:{ko:"また、本プログラムの運営規定および審査手続きに従うことに同意します。",
+         en:"I also agree to comply with the program guidelines and evaluation process."}}
    ]},
-  {no:"②", ko:"콘텐츠 활용 동의", en:"Consent to Content Use",
+  {no:"②", ko:"コンテンツ利用に関する同意", en:"Content Usage Consent",
    body:[
-     {p:{ko:"본인이 본 챌린지를 위해 제작하거나 SNS에 업로드한 사진, 영상(Reels, Shorts 등) 및 콘텐츠를 Judaan이 브랜드 홍보 및 마케팅 목적으로 활용하는 것에 동의합니다.",
-         en:"I agree that Judaan may use the photos, videos (Reels, Shorts, etc.), and content I create or upload to SNS for this challenge for brand promotion and marketing."}},
-     {p:{ko:"활용 범위는 다음을 포함합니다.", en:"The scope of use includes:"}},
+     {p:{ko:"私は、本チャレンジのために制作またはSNSへ投稿した写真・動画（Reels、Shorts等）およびその他のコンテンツを、JudaanがブランドPRおよびマーケティング目的で利用することに同意します。",
+         en:"I agree that Judaan may use the photos, videos (including Reels, Shorts, etc.), and other content that I create or upload to social media for this Challenge for brand promotion and marketing purposes."}},
+     {p:{ko:"利用範囲には以下が含まれます。", en:"The scope of use includes, but is not limited to:"}},
      {ul:[
-       {ko:"Judaan 공식 홈페이지", en:"Judaan official website"},
-       {ko:"공식 SNS (Instagram, TikTok, YouTube 등)", en:"Official SNS (Instagram, TikTok, YouTube, etc.)"},
-       {ko:"온라인 광고", en:"Online advertising"},
-       {ko:"오프라인 전시 및 행사", en:"Offline exhibitions and events"},
-       {ko:"보도자료 및 홍보물", en:"Press releases and promotional materials"},
-       {ko:"브랜드 소개 자료", en:"Brand introduction materials"},
-       {ko:"마케팅 및 프로모션 콘텐츠", en:"Marketing and promotional content"}
+       {ko:"Judaan公式ウェブサイト", en:"Judaan Official Website"},
+       {ko:"公式SNS（Instagram、TikTok、YouTube等）", en:"Official Social Media Channels (Instagram, TikTok, YouTube, etc.)"},
+       {ko:"オンライン広告", en:"Online Advertisements"},
+       {ko:"オフライン展示会・イベント", en:"Offline Exhibitions and Events"},
+       {ko:"プレスリリースおよび販促物", en:"Press Releases and Promotional Materials"},
+       {ko:"ブランド紹介資料", en:"Brand Introduction Materials"},
+       {ko:"マーケティングおよびプロモーションコンテンツ", en:"Marketing and Promotional Content"}
      ]},
-     {p:{ko:"또한 Judaan은 콘텐츠의 본래 의미를 훼손하지 않는 범위에서 다음과 같은 2차 활용을 진행할 수 있습니다.",
-         en:"Judaan may also carry out the following secondary uses without distorting the original meaning of the content:"}},
+     {p:{ko:"また、Judaanはコンテンツ本来の趣旨を損なわない範囲で、以下の二次利用を行うことができます。",
+         en:"I also agree that Judaan may make secondary use of my content, provided that the original intent of the content is not altered, including:"}},
      {ul:[
-       {ko:"자막 삽입", en:"Adding subtitles"},
-       {ko:"번역", en:"Translation"},
-       {ko:"편집", en:"Editing"},
-       {ko:"썸네일 제작", en:"Thumbnail creation"},
-       {ko:"리사이징", en:"Resizing"},
-       {ko:"디자인 보정", en:"Design adjustment"},
-       {ko:"일부 발췌 및 재구성", en:"Excerpting and restructuring"}
+       {ko:"字幕の追加", en:"Adding subtitles"},
+       {ko:"翻訳", en:"Translation"},
+       {ko:"編集", en:"Editing"},
+       {ko:"サムネイル作成", en:"Thumbnail creation"},
+       {ko:"リサイズ", en:"Resizing"},
+       {ko:"デザイン調整", en:"Design enhancement"},
+       {ko:"一部抜粋および再構成", en:"Partial extraction and rearrangement"}
      ]}
    ]},
-  {no:"③", ko:"초상권 및 계정 사용 동의", en:"Portrait Rights & Account Use",
+  {no:"③", ko:"肖像権およびSNSアカウント利用への同意", en:"Consent to Use of Portrait, Name & Social Media Account",
    body:[
-     {p:{ko:"본인은 본인의 이름(또는 활동명), SNS 계정명, 프로필 이미지, 사진 및 영상 등을 Judaan이 본 프로그램 및 브랜드 홍보 목적으로 사용하는 것에 동의합니다.",
-         en:"I agree that Judaan may use my name (or handle), SNS account name, profile image, photos, and videos for this program and for brand promotion."}}
+     {p:{ko:"私は、自身の氏名（または活動名）、SNSアカウント名、プロフィール画像、写真および動画等を、Judaanが本プログラムおよびブランドPRを目的として利用することに同意します。",
+         en:"I agree that Judaan may use my name (or creator name), social media account name, profile image, photographs, and videos for the purposes of this program and brand promotion."}}
    ]},
-  {no:"④", ko:"개인정보 수집 및 이용 동의", en:"Collection & Use of Personal Information",
+  {no:"④", ko:"個人情報の収集・利用に関する同意", en:"Consent to Collection & Use of Personal Information",
    body:[
-     {p:{ko:"Judaan은 본 프로그램 운영을 위하여 참가자의 개인정보를 수집 및 이용합니다. 수집된 정보는 아래 목적에 한하여 사용됩니다.",
-         en:"Judaan collects and uses participants' personal information to operate this program. The information is used only for the following purposes:"}},
+     {p:{ko:"Judaanは、本プログラムの運営のために参加者の個人情報を収集・利用します。収集した情報は、以下の目的に限り使用されます。",
+         en:"Judaan collects and uses participants' personal information for the operation of this program. The collected information will be used only for the following purposes:"}},
      {ul:[
-       {ko:"참가자 확인", en:"Participant verification"},
-       {ko:"심사 진행", en:"Conducting the evaluation"},
-       {ko:"수상자 선정", en:"Selecting winners"},
-       {ko:"개별 연락", en:"Individual contact"},
-       {ko:"Ambassador 프로그램 운영", en:"Operating the Ambassador program"},
-       {ko:"한국 초청 및 협업 진행 (선정자에 한함)", en:"Korea invitation and collaboration (selected participants only)"}
+       {ko:"参加者本人の確認", en:"Participant verification"},
+       {ko:"審査の実施", en:"Evaluation process"},
+       {ko:"受賞者の選定", en:"Selection of winners"},
+       {ko:"個別連絡", en:"Individual communication"},
+       {ko:"Ambassadorプログラムの運営", en:"Operation of the Ambassador Program"},
+       {ko:"韓国招待およびコラボレーションの実施（選出者のみ）", en:"Invitation to Korea and collaboration activities (selected Ambassador only)"}
      ]},
-     {p:{ko:"수집된 개인정보는 관련 법령에 따라 안전하게 관리되며, 본 프로그램 운영 목적 외에는 사용되지 않습니다.",
-         en:"The collected personal information is managed securely under applicable laws and is not used for any purpose other than operating this program."}}
+     {p:{ko:"収集した個人情報は、関係法令に基づき適切に管理され、本プログラム運営以外の目的には使用いたしません。",
+         en:"Personal information will be securely managed in accordance with applicable laws and will not be used for any purpose other than operating this program."}}
    ]},
-  {no:"⑤", ko:"콘텐츠 권리 확인", en:"Content Rights Confirmation",
+  {no:"⑤", ko:"コンテンツの権利確認", en:"Confirmation of Content Ownership",
    body:[
-     {p:{ko:"본인은 본인이 제출하거나 업로드한 콘텐츠가 본인이 직접 제작한 창작물이며, 제3자의 저작권, 초상권 또는 기타 권리를 침해하지 않음을 확인합니다.",
-         en:"I confirm that the content I submit or upload is my own original work and does not infringe any third party's copyright, portrait rights, or other rights."}},
-     {p:{ko:"만약 해당 콘텐츠로 인해 제3자와의 분쟁이 발생할 경우, 이에 대한 책임은 본인에게 있음을 확인합니다.",
-         en:"I confirm that I am responsible for any dispute with a third party arising from such content."}}
+     {p:{ko:"私は、提出または投稿するコンテンツが自ら制作したオリジナル作品であり、第三者の著作権、肖像権その他の権利を侵害していないことを確認します。",
+         en:"I confirm that all content submitted or uploaded by me is my original work and does not infringe upon the copyright, portrait rights, or any other rights of any third party."}},
+     {p:{ko:"万が一、当該コンテンツに起因して第三者との紛争が発生した場合、その責任は本人が負うことに同意します。",
+         en:"If any dispute arises with a third party regarding my submitted content, I acknowledge that I shall bear full responsibility."}}
    ]},
-  {no:"⑥", ko:"Ambassador 선정 안내", en:"Ambassador Selection Notice",
+  {no:"⑥", ko:"Ambassador選考について", en:"Ambassador Selection",
    body:[
-     {p:{ko:"본인은 본 챌린지 참가가 Judaan Ambassador 선정을 보장하는 것이 아님을 이해합니다. Judaan은 아래 항목을 종합적으로 평가하여 최종 Ambassador를 선정합니다.",
-         en:"I understand that participation does not guarantee selection as a Judaan Ambassador. Judaan selects final Ambassadors based on a comprehensive evaluation of:"}},
+     {p:{ko:"私は、本チャレンジへの参加がJudaan Ambassadorへの選出を保証するものではないことを理解しています。Judaanは以下の項目を総合的に評価し、最終的なAmbassadorを選出します。",
+         en:"I understand that participation in this Challenge does not guarantee selection as a Judaan Ambassador. Judaan will comprehensively evaluate applicants based on the following criteria:"}},
      {ul:[
-       {ko:"창의성", en:"Creativity"},
-       {ko:"콘텐츠 완성도", en:"Content quality"},
-       {ko:"브랜드 전달력", en:"Brand messaging"},
-       {ko:"화제성", en:"Buzz potential"},
-       {ko:"참여도 및 영향력", en:"Engagement and influence"}
+       {ko:"創造性", en:"Creativity"},
+       {ko:"コンテンツの完成度", en:"Content Quality"},
+       {ko:"ブランドメッセージの伝達力", en:"Brand Communication"},
+       {ko:"話題性", en:"Public Appeal"},
+       {ko:"参加度および影響力", en:"Participation and Influence"}
      ]},
-     {p:{ko:"최종 선정 결과는 Judaan의 심사 기준에 따라 결정되며 이에 동의합니다.",
-         en:"I agree that the final selection is determined according to Judaan's evaluation criteria."}}
+     {p:{ko:"最終選考結果はJudaanの審査基準に基づいて決定されることに同意します。",
+         en:"I agree that the final selection will be made according to Judaan's evaluation standards."}}
    ]},
-  {no:"⑦", ko:"한국 초청 프로그램", en:"Korea Invitation Program",
+  {no:"⑦", ko:"韓国招待プログラム", en:"Korea Invitation Program",
    body:[
-     {p:{ko:"Ambassador로 선정될 경우 Judaan과 협의하여 아래와 같은 활동에 참여할 수 있습니다.",
-         en:"If selected as an Ambassador, I may participate in the following activities in consultation with Judaan:"}},
+     {p:{ko:"Ambassadorに選出された場合、Judaanと協議のうえ、以下の活動に参加することができます。",
+         en:"If selected as a Judaan Ambassador, I may participate in the following activities in consultation with Judaan:"}},
      {ul:[
-       {ko:"한국 방문", en:"Visiting Korea"},
-       {ko:"방송 및 스튜디오 촬영", en:"Broadcast and studio filming"},
-       {ko:"라이브커머스 or 공동구매 콘텐츠 제작", en:"Live commerce or group-buy content creation"},
-       {ko:"인터뷰", en:"Interviews"},
-       {ko:"브랜드 홍보 콘텐츠 제작", en:"Brand promotion content creation"}
+       {ko:"韓国訪問", en:"Visit to Korea"},
+       {ko:"放送およびスタジオ撮影", en:"Studio and broadcast filming"},
+       {ko:"ライブコマースまたは共同購入コンテンツの制作", en:"Live commerce or group-buying content production"},
+       {ko:"インタビュー", en:"Interviews"},
+       {ko:"ブランドPRコンテンツ制作", en:"Brand promotional content production"}
      ]},
-     {p:{ko:"세부 일정 및 활동 조건은 선정 이후 별도로 안내 및 협의됩니다.",
-         en:"Detailed schedules and conditions will be provided and discussed separately after selection."}}
+     {p:{ko:"詳細な日程および活動内容については、選出後に別途ご案内・協議いたします。",
+         en:"The detailed schedule and participation conditions will be discussed separately after selection."}}
    ]},
-  {no:"⑧", ko:"최종 확인", en:"Final Confirmation",
-   agreeKo:"위 내용을 모두 확인하였으며 참가에 동의합니다.", agreeEn:"I have reviewed all of the above and agree to participate.",
+  {no:"⑧", ko:"最終確認", en:"Final Confirmation",
+   agreeKo:"上記内容をすべて確認し、参加に同意します。", agreeEn:"I have read and agree to all of the above terms.",
    body:[
-     {p:{ko:"본인은 위 내용을 모두 확인하였으며, 자발적인 의사로 Judaan Japan Ambassador Challenge에 참가하는 것에 동의합니다.",
-         en:"I have reviewed all of the above and voluntarily agree to participate in the Judaan Japan Ambassador Challenge."}},
-     {p:{ko:"또한 본인이 제공한 정보가 사실과 다르지 않음을 확인합니다.",
-         en:"I also confirm that the information I have provided is true and accurate."}}
+     {p:{ko:"私は、上記の内容をすべて確認し、自らの意思でJudaan Japan Ambassador Challengeに参加することに同意します。",
+         en:"I have carefully read and understood all of the above terms and voluntarily agree to participate in the Judaan Japan Ambassador Challenge."}},
+     {p:{ko:"また、申請時に提供した情報が事実に相違ないことを確認します。",
+         en:"I also confirm that all information provided by me is true and accurate."}}
    ]}
 ];
 
-/* ---------- 렌더링 ---------- */
 function bodyHTML(body){
   let h="";
   body.forEach(n=>{
@@ -349,7 +310,7 @@ function bodyHTML(body){
   return h;
 }
 function secHTML(s,idx){
-  const aKo=s.agreeKo||"동의합니다.", aEn=s.agreeEn||"I agree.";
+  const aKo=s.agreeKo||"同意します。", aEn=s.agreeEn||"I agree.";
   return `<div class="sec">
     <div class="head"><div class="no">${s.no}</div><div class="ttl"><div class="ko">${s.ko}</div><div class="en">${s.en}</div></div></div>
     <div class="body">${bodyHTML(s.body)}</div>
@@ -363,7 +324,6 @@ function secHTML(s,idx){
 document.getElementById('secWrap1').innerHTML = SECTIONS.slice(0,4).map((s,i)=>secHTML(s,i)).join('');
 document.getElementById('secWrap2').innerHTML = SECTIONS.slice(4,8).map((s,i)=>secHTML(s,i+4)).join('');
 
-/* 체크박스 상태 */
 const checks = new Array(8).fill(false);
 document.querySelectorAll('.agchk').forEach(cb=>{
   cb.addEventListener('change',()=>{
@@ -373,11 +333,9 @@ document.querySelectorAll('.agchk').forEach(cb=>{
   });
 });
 
-/* 날짜 */
 (function(){const d=new Date();document.getElementById('fDate').value=
   d.getFullYear()+"."+String(d.getMonth()+1).padStart(2,'0')+"."+String(d.getDate()).padStart(2,'0');})();
 
-/* ---------- 스텝 이동 ---------- */
 let step=1;
 const steps=document.getElementById('steps'),scroll=document.getElementById('scroll'),
       btnBack=document.getElementById('btnBack'),btnNext=document.getElementById('btnNext'),
@@ -399,19 +357,18 @@ function countChecked(a,b){let c=0;for(let i=a;i<b;i++)if(checks[i])c++;return c
 function updateNav(){
   if(step===1){
     const c=countChecked(0,4); btnNext.disabled=c<4;
-    cnt.textContent = c<4 ? `동의 항목 ${c}/4 · Agreements ${c}/4` : "모두 동의 완료 · All agreed";
+    cnt.textContent = c<4 ? `同意項目 ${c}/4 · Agreements ${c}/4` : "すべて同意しました · All agreed";
   }else if(step===2){
     const c=countChecked(4,8); btnNext.disabled=c<4;
-    cnt.textContent = c<4 ? `동의 항목 ${c}/4 · Agreements ${c}/4` : "모두 동의 완료 · All agreed";
+    cnt.textContent = c<4 ? `同意項目 ${c}/4 · Agreements ${c}/4` : "すべて同意しました · All agreed";
   }else{
-    cnt.textContent = validate3()?"제출 준비 완료 · Ready to submit":"이름·Instagram·이메일·서명을 입력해 주세요";
+    cnt.textContent = validate3()?"送信準備完了 · Ready to submit":"氏名・Instagram・メール・署名をご入力ください";
     btnSubmit.disabled=!validate3();
   }
 }
 btnNext.addEventListener('click',()=>{ if(!btnNext.disabled) showStep(step+1); });
 btnBack.addEventListener('click',()=>{ showStep(step-1); });
 
-/* ---------- 3단계 입력/서명 ---------- */
 const fName=document.getElementById('fName'),fIg=document.getElementById('fIg'),
       fEmail=document.getElementById('fEmail'),fPhone=document.getElementById('fPhone');
 [fName,fIg,fEmail].forEach(el=>el.addEventListener('input',updateNav));
@@ -428,7 +385,7 @@ function resizeCanvas(){
   if(signaturePad){ signaturePad.clear(); if(data) signaturePad.fromData(data); }
 }
 window.addEventListener('load',()=>{
-  signaturePad=new SignaturePad(canvas,{penColor:"#0A5D39",minWidth:0.9,maxWidth:2.8,backgroundColor:"rgba(255,255,255,0)"});
+  signaturePad=new SignaturePad(canvas,{penColor:"#2f6f54",minWidth:0.9,maxWidth:2.8,backgroundColor:"rgba(255,255,255,0)"});
   window.__signaturePad=signaturePad;
   signaturePad.addEventListener("beginStroke",()=>{sigPh.style.display="none";});
   signaturePad.addEventListener("endStroke",updateNav);
@@ -440,20 +397,19 @@ function validate3(){
   return !!(fName.value.trim() && fIg.value.trim() && fEmail.value.trim() && signaturePad && !signaturePad.isEmpty());
 }
 
-/* ---------- PDF 생성 & 전송 ---------- */
 const overlay=document.getElementById('overlay'),ovLoading=document.getElementById('ovLoading'),ovDone=document.getElementById('ovDone');
 function showHint(m){hint.textContent=m;hint.style.display='block';}
 
 function buildAgreementsHTML(){
-  let h=`<div style="text-align:center;border-bottom:3px solid #0E7A4B;padding-bottom:12px;margin-bottom:18px;">
-    <div style="font-weight:800;letter-spacing:.12em;color:#0E7A4B;font-size:14px;">JUDAAN</div>
-    <div style="font-size:20px;font-weight:800;margin-top:4px;">Japan Ambassador Challenge — 참가 신청 및 동의서</div>
+  let h=`<div style="text-align:center;border-bottom:3px solid #3C8A6B;padding-bottom:12px;margin-bottom:18px;">
+    <div style="font-weight:800;letter-spacing:.12em;color:#3C8A6B;font-size:14px;">JUDAAN</div>
+    <div style="font-size:20px;font-weight:800;margin-top:4px;">Japan Ambassador Challenge — 参加申込および同意書</div>
     <div style="font-size:12px;color:#888;margin-top:2px;">Application &amp; Consent Form</div>
   </div>`;
   SECTIONS.forEach((s,i)=>{
     h+=`<div style="margin-bottom:14px;">
-      <div style="font-size:14px;font-weight:800;color:#0A5D39;">${s.no} ${s.ko} <span style="color:#999;font-weight:600;font-size:11px;">(${s.en})</span>
-        <span style="float:right;color:#0E7A4B;font-weight:800;font-size:12px;">${checks[i]?"☑ 동의함 / Agreed":"☐ 미동의"}</span></div>`;
+      <div style="font-size:14px;font-weight:800;color:#357E60;">${s.no} ${s.ko} <span style="color:#999;font-weight:600;font-size:11px;">(${s.en})</span>
+        <span style="float:right;color:#3C8A6B;font-weight:800;font-size:12px;">${checks[i]?"☑ 同意済み / Agreed":"☐ 未同意"}</span></div>`;
     s.body.forEach(n=>{
       if(n.p) h+=`<div style="font-size:11.5px;color:#333;margin:4px 0;line-height:1.7;">${n.p.ko}<br><span style="color:#9aa6a0;font-size:10px;">${n.p.en}</span></div>`;
       if(n.ul){h+=`<div style="font-size:11px;color:#444;margin:2px 0 4px 10px;">`;n.ul.forEach(li=>{h+=`• ${li.ko} <span style="color:#9aa6a0;">/ ${li.en}</span><br>`;});h+=`</div>`;}
@@ -464,19 +420,19 @@ function buildAgreementsHTML(){
 }
 function buildSignHTML(meta){
   return `<div>
-    <div style="font-size:16px;font-weight:800;color:#0A5D39;margin-bottom:14px;border-bottom:2px solid #0E7A4B;padding-bottom:8px;">참가자 정보 및 서명 / Participant Information &amp; Signature</div>
-    ${row("이름/활동명 (Name)",meta.name)}
+    <div style="font-size:16px;font-weight:800;color:#357E60;margin-bottom:14px;border-bottom:2px solid #3C8A6B;padding-bottom:8px;">参加者情報および署名 / Participant Information &amp; Signature</div>
+    ${row("氏名 (Name)",meta.name)}
     ${row("Instagram",meta.ig)}
-    ${row("이메일 (Email)",meta.email)}
-    ${row("연락처 (Contact)",meta.phone||"—")}
-    ${row("신청일 (Date)",meta.date)}
-    ${row("제출 시각 (Submitted)",meta.ts)}
-    <div style="margin-top:20px;color:#666;font-size:12px;">전자서명 (Electronic Signature)</div>
+    ${row("メール (Email)",meta.email)}
+    ${row("電話番号 (Phone)",meta.phone||"—")}
+    ${row("申請日 (Date)",meta.date)}
+    ${row("送信時刻 (Submitted)",meta.ts)}
+    <div style="margin-top:20px;color:#666;font-size:12px;">電子署名 (Electronic Signature)</div>
     <div style="margin-top:6px;border:1px solid #ccc;border-radius:6px;padding:12px;display:inline-block;">
       <img src="${meta.sig}" style="width:340px;height:150px;object-fit:contain;display:block;">
     </div>
     <div style="border-top:1px solid #333;width:364px;margin-top:2px;"></div>
-    <div style="margin-top:10px;font-size:10.5px;color:#9aa6a0;">위 서명자는 본 동의서의 8개 항목 전체에 동의하였습니다. / The signer has agreed to all 8 items of this consent form.</div>
+    <div style="margin-top:10px;font-size:10.5px;color:#9aa6a0;">上記署名者は本同意書の8項目すべてに同意しました。/ The signer has agreed to all 8 items of this consent form.</div>
   </div>`;
 }
 function row(k,v){return `<div style="display:flex;margin-bottom:7px;font-size:12.5px;"><div style="width:150px;color:#666;">${k}</div><div style="font-weight:600;">${v}</div></div>`;}
@@ -503,7 +459,6 @@ btnSubmit.addEventListener('click',async()=>{
     document.getElementById('pdf-render').innerHTML=
       `<div id="pdfA">${buildAgreementsHTML()}</div>`+
       `<div id="pdfB" style="padding-top:6px;">${buildSignHTML(meta)}</div>`;
-    // 서명 이미지 로드 대기
     const sigImg=document.querySelector('#pdfB img');
     if(sigImg && !sigImg.complete){ await new Promise(res=>{sigImg.onload=res;sigImg.onerror=res;}); }
     await new Promise(r=>setTimeout(r,150));
@@ -511,13 +466,13 @@ btnSubmit.addEventListener('click',async()=>{
     const {jsPDF}=window.jspdf;
     const pdf=new jsPDF('p','mm','a4');
     const shotA=await html2canvas(document.getElementById('pdfA'),{scale:2,backgroundColor:'#ffffff',useCORS:true});
-    addCanvasPaged(pdf,shotA,false);              // 동의 내용 (1~n페이지)
+    addCanvasPaged(pdf,shotA,false);
     const shotB=await html2canvas(document.getElementById('pdfB'),{scale:2,backgroundColor:'#ffffff',useCORS:true});
-    addCanvasPaged(pdf,shotB,true);               // 참가자정보+서명 (항상 새 페이지, 잘리지 않음)
+    addCanvasPaged(pdf,shotB,true);
 
     const base64=pdf.output('datauristring').split(',')[1];
     const safe=meta.name.replace(/[\\/:*?"<>|\s]/g,'_');
-    const filename="Judaan참가동의서_"+safe+"_"+Date.now()+".pdf";
+    const filename="Judaan_Consent_"+safe+"_"+Date.now()+".pdf";
 
     if(APPS_SCRIPT_URL.startsWith("PASTE_")) throw new Error("APPS_SCRIPT_URL 미설정");
 
@@ -530,7 +485,7 @@ btnSubmit.addEventListener('click',async()=>{
     ovLoading.style.display='none'; ovDone.style.display='block';
   }catch(err){
     overlay.style.display='none';
-    showHint("전송에 실패했습니다. 통신 상태를 확인 후 다시 시도해 주세요. / Failed to send, please try again.");
+    showHint("送信に失敗しました。通信環境をご確認のうえ、もう一度お試しください。/ Failed to send, please try again.");
     console.error(err);
   }
 });
